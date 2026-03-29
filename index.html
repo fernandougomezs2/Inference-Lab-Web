@@ -24,7 +24,7 @@
   "url": "https://inferencelab.com/",
   "logo": "LOGOINFERENCE.png",
   "description": "Inference Lab diseña sitios web corporativos, portafolios profesionales, mini-apps a medida y mantenimiento mensual para negocios y profesionales.",
-  "email": "hola@inferencelab.com",
+  "email": "agenciainferencelab@gmail.com",
   "serviceType": [
     "Sitios web corporativos",
     "Portafolios profesionales",
@@ -964,7 +964,12 @@ footer{
           <li><span>3</span> Si quieres, también podemos quedarnos con el mantenimiento.</li>
         </ul>
       </div>
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="field" style="display:none">
+          <label for="bot-field">No llenar si eres humano</label>
+          <input id="bot-field" name="bot-field" type="text" autocomplete="off">
+        </div>
         <div class="form-row">
           <div class="field">
             <label for="nombre">Nombre</label>
@@ -998,10 +1003,10 @@ footer{
           <div class="field-hint" id="mensaje-hint">Mientras más claro, mejor te cotizamos.</div>
         </div>
         <div class="form-actions">
-          <a class="btn-outline" href="mailto:hola@inferencelab.com">Escribir por correo</a>
+          <a class="btn-outline" href="mailto:agenciainferencelab@gmail.com">Escribir por correo</a>
           <button type="submit" class="btn-main">Enviar mensaje</button>
         </div>
-        <p class="form-note">El formulario abre tu cliente de correo con el mensaje preparado. Si prefieres, también puedes escribirnos directo a <a href="mailto:hola@inferencelab.com">hola@inferencelab.com</a>.</p>
+        <p class="form-note">El formulario se envía directo a nuestro correo. Si prefieres, también puedes escribirnos a <a href="mailto:agenciainferencelab@gmail.com">agenciainferencelab@gmail.com</a>.</p>
         <p class="form-status" id="form-status" aria-live="polite"></p>
       </form>
     </div>
@@ -1032,7 +1037,7 @@ footer{
     <div class="f-col">
       <h5>Enlaces</h5>
       <ul>
-        <li><a href="mailto:hola@inferencelab.com">hola@inferencelab.com</a></li>
+        <li><a href="mailto:agenciainferencelab@gmail.com">agenciainferencelab@gmail.com</a></li>
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#para-quien">Para quién</a></li>
@@ -1100,7 +1105,6 @@ footer{
     });
 
     form.addEventListener('submit', (event) => {
-      event.preventDefault();
 
       let hasErrors = false;
       fields.forEach((field) => {
@@ -1114,25 +1118,12 @@ footer{
       });
 
       if (hasErrors) {
+        event.preventDefault();
         status.textContent = 'Revisa los campos marcados en rojo antes de enviar.';
         return;
       }
 
-      const nombre = document.getElementById('nombre').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const servicio = document.getElementById('servicio').value.trim();
-      const mensaje = document.getElementById('mensaje').value.trim();
-
-      const subject = encodeURIComponent(`Consulta web - ${servicio}`);
-      const body = encodeURIComponent(
-        `Nombre: ${nombre}\nCorreo: ${email}\nServicio: ${servicio}\n\nMensaje:\n${mensaje}`
-      );
-
-      status.textContent = 'Abriendo tu correo para enviar el mensaje...';
-      window.location.href = `mailto:hola@inferencelab.com?subject=${subject}&body=${body}`;
-      setTimeout(() => {
-        status.textContent = 'Si tu correo no se abre, escríbenos directo a hola@inferencelab.com';
-      }, 900);
+      status.textContent = 'Enviando...';
     });
   }
 </script>
