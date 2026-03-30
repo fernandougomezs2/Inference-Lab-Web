@@ -1,0 +1,26 @@
+Oxypose: 
+Tauri: Es el núcleo del proyecto. Lo elegiste en lugar de Electron para mantener la aplicación ligera y segura, utilizando el motor de renderizado nativo del sistema operativo.
+Rust: Como lenguaje principal en el lado del servidor (backend de Tauri). Es ideal por su manejo de memoria y velocidad, especialmente necesario para procesar datos de sensores o cámaras en tiempo real sin latencia.
+Modelos de Visión: Integración de modelos ligeros para la detección de puntos clave del cuerpo (como hombros y columna) que activan las alertas si te encorvas.
+
+
+LoopNative:
+Python: Es el lenguaje detrás de la lógica del servidor. Lo aprovechas por su ecosistema robusto en el manejo de archivos multimedia y su facilidad para integrar APIs de terceros.
+SQL: La base de datos donde gestionas el progreso de los usuarios, los archivos de audio asociados a cada lección y las métricas de estudio diario.
+Procesamiento de Audio: El motor principal se encarga de segmentar audio para que el usuario pueda escuchar y repetir frases de forma bucleada.
+
+Travel-Pulse:
+Python
+SQL
+Groq
+
+rust-task-prioritizer
+Rust
+
+Detección de múltiples rostros
+Python
+
+Sitio web:
+HTML
+CSS
+JS
